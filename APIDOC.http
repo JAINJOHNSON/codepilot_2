@@ -1,0 +1,97 @@
+
+# ========= ADMIN,STUDENT REGISTRATION ============= #
+
+# api call for admin create view
+###
+POST http://127.0.0.1:8000/accounts/admin/register/
+Content-Type: application/json
+
+{
+    "username":"django",
+    "email":"django@gmail.com",
+    "password":"django@123",
+    "phone":"789456123"
+}
+
+# api call for student create view
+###
+POST http://127.0.0.1:8000/accounts/student/register/
+Content-Type: application/json
+
+{
+    "username":"studentB",
+    "email":"studentB@gmail.com",
+    "password":"studentB123",
+    "phone":"458797123"
+}
+
+# api call for token authentication  # 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+###
+POST http://127.0.0.1:8000/exams/assessment/token/
+Content-Type: application/json
+
+{
+    "username":"django",
+    "password":"django@123"
+}
+
+
+# ========= ASSESSMENT LIST,CREATE VIEW ============= #
+
+
+# api call for assessment listing
+###
+GET http://127.0.0.1:8000/exams/assessment/all/
+Accept: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+# api call for creating assessment
+###
+POST http://127.0.0.1:8000/exams/assessment/add/
+Content-Type: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+{
+    "title":"assessment 8",
+    "batch":"june 2k26",
+    "language":"html",
+    "exam_date":"2026-10-27",
+    "start_time":"11",
+    "duration":2,
+    "status":"submitted"
+}
+
+
+# ========= ASSESSMENT RETRIEVE,UPDATE,DELETE VIEW ============= #
+
+
+# api call for one assessment listing
+###
+GET http://127.0.0.1:8000/exams/assessment/1/
+Accept: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+# api call for upating one assessment
+###
+PUT http://127.0.0.1:8000/exams/assessment/1/
+Content-Type: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+{
+  "id": 1,
+  "created_by": "admin",
+  "title": "assessment 1",
+  "batch": "june 2k26",
+  "language": "html",
+  "exam_date": "2026-10-28",
+  "start_time": "10:00:00",
+  "duration": 2,
+  "end_time": "12:00:00",
+  "status": "submitted"
+}
+
+# api call for deleting one assessment
+###
+DELETE http://127.0.0.1:8000/exams/assessment/2/
+Accept: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
