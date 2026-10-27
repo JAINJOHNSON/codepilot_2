@@ -7,9 +7,10 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView,CreateAPIView
 
 from exams.models import Assessment
-from accounts.models import User
 from exams.serializers import AssessmentSerializer
 from exams.permissions import OwnerOnly
+
+from accounts.models import User
 
 from datetime import datetime,time,timedelta
 

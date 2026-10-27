@@ -95,3 +95,20 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 DELETE http://127.0.0.1:8000/exams/assessment/2/
 Accept: application/json
 Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+
+
+# api call for posting questions--------------
+
+###
+POST http://127.0.0.1:8000/problem/assessment/1/question/
+Content-Type: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+{
+    "title":"Hello World",
+    "description":" Print hello world",
+    "score":2,
+    "sample_input":"Hello ",
+    "sample_output":"Hello"
+}

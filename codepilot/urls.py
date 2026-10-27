@@ -23,6 +23,8 @@ urlpatterns = [
     # route to accounts
     path("accounts/",include("accounts.urls")),
 
-    # route to exams
+    #to exams
     path("exams/",include("exams.urls")),
+    #to problems
+    path("problem/",include("problem.urls"))
 ]
