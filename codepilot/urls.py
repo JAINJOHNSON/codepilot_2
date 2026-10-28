@@ -20,11 +20,13 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # route to accounts
+    #   accounts app
     path("accounts/",include("accounts.urls")),
 
-    #to exams
+    #to exams app
     path("exams/",include("exams.urls")),
-    #to problems
-    path("problem/",include("problem.urls"))
+    # problems app
+    path("problem/",include("problem.urls")),
+    #evaluation app
+    path("evaluation/",include("evaluation.urls")),
 ]

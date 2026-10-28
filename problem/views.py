@@ -15,6 +15,8 @@ from exams.models import Assessment
 
 from problem.serializer import QuestionSerializer
 
+from problem.models import Question
+
 
 
 
@@ -40,4 +42,11 @@ class QuestionCreateView(APIView):
 
 
 class QuestionsRetriveUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+
+    serializer_class = QuestionSerializer
+    queryset = Question.objects.all()
+
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
+
     

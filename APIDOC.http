@@ -52,7 +52,7 @@ Content-Type: application/json
 Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
 {
-    "title":"assessment 8",
+    "title":"assessment 1",
     "batch":"june 2k26",
     "language":"html",
     "exam_date":"2026-10-27",
@@ -67,7 +67,7 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
 # api call for one assessment listing
 ###
-GET http://127.0.0.1:8000/exams/assessment/1/
+GET http://127.0.0.1:8000/exams/assessment/3/
 Accept: application/json
 Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
@@ -80,7 +80,7 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 {
   "id": 1,
   "created_by": "admin",
-  "title": "assessment 1",
+  "title": "assessment 2",
   "batch": "june 2k26",
   "language": "html",
   "exam_date": "2026-10-28",
@@ -92,23 +92,55 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
 # api call for deleting one assessment
 ###
-DELETE http://127.0.0.1:8000/exams/assessment/2/
+DELETE http://127.0.0.1:8000/exams/assessment/3/
 Accept: application/json
 Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
 
 
-# api call for posting questions--------------
+# api call for adding questions-------under the assessment given in url-------
 
 ###
-POST http://127.0.0.1:8000/problem/assessment/1/question/
+POST http://127.0.0.1:8000/problem/assessment/3/question/
 Content-Type: application/json
 Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
 {
-    "title":"Hello World",
-    "description":" Print hello world",
-    "score":2,
-    "sample_input":"Hello ",
-    "sample_output":"Hello"
+    "title":"string problem",
+    "description":" join string",
+    "score":30,
+    "sample_input":"sting 2 ",
+    "sample_output":"string2"
 }
+
+
+
+# api call for listing one question-----------------------------------------------
+###
+GET http://127.0.0.1:8000/problem/question/2/
+Accept: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+# api call for updating question--------------------------------------
+###
+PUT http://127.0.0.1:8000/problem/question/3/
+Content-Type: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+{
+  "id": 1,
+  "assessment": "assessment 4",
+  "created_by": "admin",
+  "title": "add two numbers",
+  "description": "write a code for adding two number",
+  "score": 1000,
+  "sample_input": "num1=10 num2=20",
+  "sample_output": "result = 30"
+
+}
+
+# api call for deleting  question---------------------------------------
+###
+DELETE http://127.0.0.1:8000/problem/question/4/
+Accept: application/json
+Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
