@@ -7,10 +7,10 @@ POST http://127.0.0.1:8000/accounts/admin/register/
 Content-Type: application/json
 
 {
-    "username":"django",
-    "email":"django@gmail.com",
-    "password":"django@123",
-    "phone":"789456123"
+    "username":"ad1",
+    "email":"ad1@gmail.com",
+    "password":"ad1",
+    "phone":"1111111111"
 }
 
 # api call for student create view
@@ -19,10 +19,10 @@ POST http://127.0.0.1:8000/accounts/student/register/
 Content-Type: application/json
 
 {
-    "username":"studentk",
-    "email":"studentk@gmail.com",
-    "password":"studentk123",
-    "phone":"45879796788"
+    "username":"sdl",
+    "email":"sd1@gmail.com",
+    "password":"sd1",
+    "phone":"111111111"
 }
 
 # api call for token authentication  # django django@123 51909b7709a37388ea4c9fcd634ccec27fddeb1e
@@ -30,15 +30,18 @@ Content-Type: application/json
 #                                                        dcda3376f505e4f67825bed7a84a75996d80589f
 #                                             j  3dd296c6571615890a6adbdddfe4f1f24c704fd5
 #                                          k   3479d2e04fa0ff5b811f5f7dc409a7e76266c975
+#                                          l   7b73c8f3eda300386d6edb9e097fe91b43e4ec55
 
+# api call for token authentication admin id 16  # ad1 ad1 d9922e0042be297ea0249859bdf3c99ee0290384
+# api call for token authentication student  # sdl sd1 cdef513a262e20b37cad3a4c76aa374d4e5b8cfb
 
 ###
 POST http://127.0.0.1:8000/exams/assessment/token/
 Content-Type: application/json
 
 {
-    "username":"studentk",
-    "password":"studentk123"
+    "username":"sdl",
+    "password":"sd1"
 }
 
 
@@ -49,19 +52,19 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:8000/exams/assessment/all/
 Accept: application/json
-Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+Authorization: Token d9922e0042be297ea0249859bdf3c99ee0290384
 
 # api call for creating assessment
 ###
 POST http://127.0.0.1:8000/exams/assessment/add/
 Content-Type: application/json
-Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+Authorization: Token d9922e0042be297ea0249859bdf3c99ee0290384
 
 {
-    "title":"assessment 1",
+    "title":"assessment 30102026",
     "batch":"june 2k26",
     "language":"html",
-    "exam_date":"2026-10-27",
+    "exam_date":"2026-10-31",
     "start_time":"11",
     "duration":2,
     "status":"submitted"
@@ -73,9 +76,9 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
 # api call for one assessment listing
 ###
-GET http://127.0.0.1:8000/exams/assessment/3/
+GET http://127.0.0.1:8000/exams/assessment/4/
 Accept: application/json
-Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+Authorization: Token d9922e0042be297ea0249859bdf3c99ee0290384
 
 # api call for upating one assessment
 ###
@@ -107,14 +110,14 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 # api call for adding questions-------under the assessment given in url-------
 
 ###
-POST http://127.0.0.1:8000/problem/assessment/3/question/
+POST http://127.0.0.1:8000/problem/assessment/4/question/
 Content-Type: application/json
-Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+Authorization: Token d9922e0042be297ea0249859bdf3c99ee0290384
 
 {
-    "title":"string problem",
+    "title":"string problem 2 30102026",
     "description":" join string",
-    "score":30,
+    "score":450000,
     "sample_input":"sting 2 ",
     "sample_output":"string2"
 }
@@ -123,9 +126,9 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 
 # api call for listing one question-----------------------------------------------
 ###
-GET http://127.0.0.1:8000/problem/question/2/
+GET http://127.0.0.1:8000/problem/question/4/
 Accept: application/json
-Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+Authorization: Token d9922e0042be297ea0249859bdf3c99ee0290384
 
 # api call for updating question--------------------------------------
 ###
@@ -158,16 +161,42 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 # Submission endpoints
 
 # API call for starting a submission -------------"inprogress"
+#=========================================================
+#               SUBMISSION 
+#==========================================================
 ###
-POST http://127.0.0.1:8000/evaluation/assessment/3/submission/
+POST http://127.0.0.1:8000/evaluation/assessment/4/submission/
 Content-Type: application/json
-Authorization: Token 3479d2e04fa0ff5b811f5f7dc409a7e76266c975
+Authorization: Token cdef513a262e20b37cad3a4c76aa374d4e5b8cfb
 
 {
 
 }
 
+# to get one submission
+###
+GET  http://127.0.0.1:8000/evaluation/submission/13
+Accept: application/json
+Authorization: Token 3479d2e04fa0ff5b811f5f7dc409a7e76266c975
+
+
+#======================================= 
+#               ANSWER
+#==========================================
 
 # to add answer to the submission
+###
+POST http://127.0.0.1:8000/evaluation/submission/13/answer/
+Content-Type: application/json
+Authorization: Token cdef513a262e20b37cad3a4c76aa374d4e5b8cfb
 
-POST http://127.0.0.1:8000/evaluation/assessment/3/answer/
+{
+    "question":5,
+    "answer_text":"print(hello world)"
+}
+
+
+
+
+# evaluate answer
+
