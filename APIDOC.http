@@ -19,20 +19,26 @@ POST http://127.0.0.1:8000/accounts/student/register/
 Content-Type: application/json
 
 {
-    "username":"studentB",
-    "email":"studentB@gmail.com",
-    "password":"studentB123",
-    "phone":"458797123"
+    "username":"studentk",
+    "email":"studentk@gmail.com",
+    "password":"studentk123",
+    "phone":"45879796788"
 }
 
-# api call for token authentication  # 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+# api call for token authentication  # django django@123 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+#                                   studentg studentg123 79b5d1a10d3103adcacd72d613e0967dfa582ad9
+#                                                        dcda3376f505e4f67825bed7a84a75996d80589f
+#                                             j  3dd296c6571615890a6adbdddfe4f1f24c704fd5
+#                                          k   3479d2e04fa0ff5b811f5f7dc409a7e76266c975
+
+
 ###
 POST http://127.0.0.1:8000/exams/assessment/token/
 Content-Type: application/json
 
 {
-    "username":"django",
-    "password":"django@123"
+    "username":"studentk",
+    "password":"studentk123"
 }
 
 
@@ -144,3 +150,24 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 DELETE http://127.0.0.1:8000/problem/question/4/
 Accept: application/json
 Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
+
+
+# ================================================================================
+#================================================================================
+# ================================================================================
+# Submission endpoints
+
+# API call for starting a submission -------------"inprogress"
+###
+POST http://127.0.0.1:8000/evaluation/assessment/3/submission/
+Content-Type: application/json
+Authorization: Token 3479d2e04fa0ff5b811f5f7dc409a7e76266c975
+
+{
+
+}
+
+
+# to add answer to the submission
+
+POST http://127.0.0.1:8000/evaluation/assessment/3/answer/
