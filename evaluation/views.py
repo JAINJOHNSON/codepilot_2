@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import serializers
 
 from evaluation.permissions import isStudentUser
-from evaluation.models import Submission
+from evaluation.models import Submission,Answer
 from evaluation.serializers import SubmissionSerializers,AnswerSerializer
 
 
@@ -79,3 +79,26 @@ class AnswerCreateView(APIView):
         else:
 
             return Response(data=serializer_inst.errors)
+
+
+
+class AnswerUpdateView(APIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
+
+    def patch(self,request,pk=None):
+        answer_id = pk
+        form_data = request.data
+
+        answer_obj = get_object_or_404(Answer, id=answer_id)
+        serializer_instance = AnswerSerializer(data=form_data,instance=answer_obj,partial=True)
+
+        if serializer_instance.is_valid():
+            # serializer_instance.save()
+            # return Response(data=serializer_instance.data)
+            Answer.objects.filter(id=answer_id).update(**form_data)
+            response_data = {"message":"answer evaluated"}
+            return Response(data=response_data)
+
+        else:
+            return Response(data=serializer_instance.errors)

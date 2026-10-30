@@ -26,6 +26,9 @@ class SubmissionSerializers(serializers.ModelSerializer):
     #     return fields
 
 class AnswerSerializer(serializers.ModelSerializer):
+
+    question = serializers.StringRelatedField(read_only = True)
+
     class Meta:
         model = Answer
         fields = "__all__"

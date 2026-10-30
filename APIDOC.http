@@ -198,5 +198,15 @@ Authorization: Token cdef513a262e20b37cad3a4c76aa374d4e5b8cfb
 
 
 
-# evaluate answer
+# evaluate answer and add marks
+
+###
+PATCH http://127.0.0.1:8000/evaluation/answer/1/
+Content-Type: application/json
+Authorization: Token d9922e0042be297ea0249859bdf3c99ee0290384
+
+{
+    "marks_awarded":10,
+    "feedback":"well tried"
+}
 
