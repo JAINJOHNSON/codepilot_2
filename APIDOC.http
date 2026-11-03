@@ -7,10 +7,10 @@ POST http://127.0.0.1:8000/accounts/admin/register/
 Content-Type: application/json
 
 {
-    "username":"ad1",
-    "email":"ad1@gmail.com",
-    "password":"ad1",
-    "phone":"1111111111"
+    "username":"jwt_ad1",
+    "email":"jwt_ad1@gmail.com",
+    "password":"jwt_ad1",
+    "phone":"2111111111"
 }
 
 # api call for student create view
@@ -44,6 +44,35 @@ Content-Type: application/json
     "password":"sd1"
 }
 
+# ===========================================================
+# ======== JWT Token creation ===============================
+# ===========================================================
+ 
+#   jwt_ad1    
+# "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5MzgxMzY4NywiaWF0IjoxNzkzNzI3Mjg3LCJqdGkiOiJiYzBiN2U1MmM3MjI0MDM0YTQ1MjQzMjkxNzI3NzUzMSIsInVzZXJfaWQiOiIxOCJ9.ptYD5hbjxteOCf-J_YIl1S-SmSut2oSUOoEM2M_ASwA"
+# "access":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNzI3NjY5LCJpYXQiOjE3OTM3MjczNjksImp0aSI6IjczMjdhNmI4NGRjMzQwMjk4NGI5ZjkwOTMxMmFhYTAwIiwidXNlcl9pZCI6IjE4In0.6rhF5dF6hjHxp9ktIAgq7YtXwGOhvZ8C9Bo8Ve5eim8"
+
+#   jwt_st1
+
+
+###
+POST http://127.0.0.1:8000/accounts/jwt/token/register/
+Content-Type: application/json
+
+{
+    "username":"jwt_ad1",
+    "password":"jwt_ad1"
+}
+
+# api call for token refresh ==========================
+
+###
+POST http://127.0.0.1:8000/accounts/jwt/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5MzgxMzY4NywiaWF0IjoxNzkzNzI3Mjg3LCJqdGkiOiJiYzBiN2U1MmM3MjI0MDM0YTQ1MjQzMjkxNzI3NzUzMSIsInVzZXJfaWQiOiIxOCJ9.ptYD5hbjxteOCf-J_YIl1S-SmSut2oSUOoEM2M_ASwA"
+}
 
 # ========= ASSESSMENT LIST,CREATE VIEW ============= #
 
@@ -158,7 +187,13 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 # ================================================================================
 #================================================================================
 # ================================================================================
+
+
+
 # Submission endpoints
+
+
+
 
 # API call for starting a submission -------------"inprogress"
 #=========================================================
@@ -167,7 +202,8 @@ Authorization: Token 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 ###
 POST http://127.0.0.1:8000/evaluation/assessment/4/submission/
 Content-Type: application/json
-Authorization: Token cdef513a262e20b37cad3a4c76aa374d4e5b8cfb
+# Authorization: Token cdef513a262e20b37cad3a4c76aa374d4e5b8cfb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNzI5MTY0LCJpYXQiOjE3OTM3Mjg4NjQsImp0aSI6ImM5NmVhN2MxNWU3ZjRjNTU5NDQ2ZGQ0Y2UxZmVhYjM5IiwidXNlcl9pZCI6IjE4In0.ErjCmE7soPMxVujG4sCuaJsQPYtiU63jImq8tdUIU94
 
 {
 
@@ -206,7 +242,7 @@ Content-Type: application/json
 Authorization: Token d9922e0042be297ea0249859bdf3c99ee0290384
 
 {
-    "marks_awarded":10,
-    "feedback":"well tried"
+    "marks_awarded":9,
+    "feedback":"winked it, huh"
 }
 

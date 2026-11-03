@@ -3,6 +3,8 @@ from django.urls import path
 
 from accounts.views import AdminCreateView,StudentCreateView
 
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
+
 urlpatterns = [
 
     # route to admin register view
@@ -10,4 +12,7 @@ urlpatterns = [
 
     # route to student register view
     path("student/register/",StudentCreateView.as_view()),
+
+    path("jwt/token/register/",TokenObtainPairView.as_view()),
+    path("jwt/token/refresh/",TokenRefreshView.as_view())
 ]

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'exams',
     'rest_framework.authtoken',
     'problem',
-    'evaluation'
+    'evaluation',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [

@@ -10,6 +10,8 @@ from evaluation.permissions import isStudentUser
 from evaluation.models import Submission,Answer
 from evaluation.serializers import SubmissionSerializers,AnswerSerializer
 
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 
 from exams.models import Assessment
 
@@ -17,8 +19,11 @@ from problem.models import Question
 
 
 class SubmisstionStartView(APIView):
-    authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [isStudentUser]
+    # authentication_classes = [authentication.TokenAuthentication]
+    # permission_classes = [isStudentUser]
+
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAuthenticated,isStudentUser]
 
     def post(self,request,pk=None):
         assessment_id = pk
@@ -81,7 +86,7 @@ class AnswerCreateView(APIView):
             return Response(data=serializer_inst.errors)
 
 
-
+"""  will work
 class AnswerUpdateView(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAdminUser]
@@ -99,6 +104,53 @@ class AnswerUpdateView(APIView):
             Answer.objects.filter(id=answer_id).update(**form_data)
             response_data = {"message":"answer evaluated"}
             return Response(data=response_data)
+
+        else:
+            return Response(data=serializer_instance.errors)
+
+"""
+# another method
+
+class AnswerUpdateView(APIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
+
+
+
+    def patch(self,request,pk=None):
+        answer_id = pk
+        form_data = request.data
+
+        #check awarded_marks is more than question_max mark 
+        given_score = form_data.get("marks_awarded")    #added
+        print("marks_awarded = ",given_score)           #added
+
+        
+        
+        
+
+        #    till here
+
+
+
+        answer_obj = get_object_or_404(Answer, id=answer_id)
+        serializer_instance = AnswerSerializer(data=form_data,instance=answer_obj,partial=True)
+
+        serializer_instance.fields["marks_awarded"].read_only=False
+        serializer_instance.fields["feedback"].read_only=False
+
+        #
+        question_id = answer_obj.question.id
+        print("Question ID:", question_id)
+
+        question_score = answer_obj.question.marks
+        print("maximum marks",question_score)
+
+
+        if serializer_instance.is_valid():
+            print(serializer_instance.validated_data)
+            serializer_instance.save()
+            return Response(data=serializer_instance.data)
 
         else:
             return Response(data=serializer_instance.errors)
