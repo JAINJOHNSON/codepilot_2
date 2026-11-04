@@ -19,11 +19,33 @@ POST http://127.0.0.1:8000/accounts/student/register/
 Content-Type: application/json
 
 {
-    "username":"sdl",
-    "email":"sd1@gmail.com",
-    "password":"sd1",
-    "phone":"111111111"
+    "username":"sd2",
+    "email":"sd2@gmail.com",
+    "password":"sd2",
+    "phone":"1111111112"
 }
+
+# api call completing student profile
+###
+PUT  http://127.0.0.1:8000/accounts/profile/complete/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNzYzNjY3LCJpYXQiOjE3OTM3NjMzNjcsImp0aSI6IjY4YzU4ZTIxODMxODRkMzE5YWIxY2UwMDM2MDY4ZDcwIiwidXNlcl9pZCI6IjE5In0.zASNVci7LAc9HO1EPdFgrGtAWonYvzP_77jBrbnc9Wg
+
+{
+    "skills":"django june",
+    "qualification":"Btech",
+    "passoutyear":"2020",
+    "githuburl":"http://sd.com",
+    "linkedurl":"http://sdlinked.com"
+}
+
+# api call for retreiving student profile
+###
+GET http://127.0.0.1:8000/accounts/profile/get/me/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNzY0NTU3LCJpYXQiOjE3OTM3NjQyNTcsImp0aSI6ImQ4NzM4MGY1MGYwNDRhYWVhNzliZDc0NzQ5ZDkxNDQ3IiwidXNlcl9pZCI6IjE5In0.vr2ps95eb0DCKgmqdITKnRM5TBJlDrCuefkBAiVxdUI
+
+
 
 # api call for token authentication  # django django@123 51909b7709a37388ea4c9fcd634ccec27fddeb1e
 #                                   studentg studentg123 79b5d1a10d3103adcacd72d613e0967dfa582ad9
@@ -34,6 +56,9 @@ Content-Type: application/json
 
 # api call for token authentication admin id 16  # ad1 ad1 d9922e0042be297ea0249859bdf3c99ee0290384
 # api call for token authentication student  # sdl sd1 cdef513a262e20b37cad3a4c76aa374d4e5b8cfb
+# api call for token authentication student  # sd2 sd2
+
+
 
 ###
 POST http://127.0.0.1:8000/exams/assessment/token/
@@ -60,8 +85,8 @@ POST http://127.0.0.1:8000/accounts/jwt/token/register/
 Content-Type: application/json
 
 {
-    "username":"jwt_ad1",
-    "password":"jwt_ad1"
+    "username":"sd2",
+    "password":"sd2"
 }
 
 # api call for token refresh ==========================
