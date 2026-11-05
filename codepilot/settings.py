@@ -47,16 +47,23 @@ INSTALLED_APPS = [
     'problem',
     'evaluation',
     'rest_framework_simplejwt',
+    'corsheaders',              # added to allow all port request
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    "corsheaders.middleware.CorsMiddleware",            # added to allow all port request
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+
+    
+    
 ]
 
 ROOT_URLCONF = 'codepilot.urls'
@@ -85,11 +92,11 @@ WSGI_APPLICATION = 'codepilot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'codepilot_db',        # The name of your database
-        'USER': 'root',                # Your MySQL username
-        'PASSWORD': 'Password@123',    # Your MySQL password
-        'HOST': 'localhost',            # Use '127.0.0.1' or the server's IP address
-        'PORT': '3306',                 # Default MySQL port
+        'NAME': 'codepilot_db',                         # The name of your database
+        'USER': 'root',                                 # Your MySQL username
+        'PASSWORD': os.getenv("DATABASE_PASSWORD"),     # Your MySQL password
+        'HOST': 'localhost',                            # Use '127.0.0.1' or the server's IP address
+        'PORT': '3306',                                 # Default MySQL port
         
     }
 }
@@ -168,4 +175,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'jainjohnson14@gmail.com'
-EMAIL_HOST_PASSWORD = 'jzvn tqtm beuw xmli'
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+
+
+
+
+
+CORS_ALLOW_ALL_ORIGINS = True           # added to allow all port request
