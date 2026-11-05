@@ -32,3 +32,18 @@ def create_student_profile(sender,instance,created,*args,**kwargs):
         StudentProfile.objects.create(student=instance)
 
 post_save.connect(create_student_profile,sender=User)
+
+# to send mail automatically when new user account is created
+
+from django.core.mail import send_mail
+
+def send_invitaion_mail(sender,instance,created,*args,**kwargs):
+    if created and instance.role == "student":
+        send_mail(
+                    "Account creation Confirmation",
+                    "You have successfully created account in codepilot",
+                    "jainjohnson14@gmail.com",
+                    ["greenrazor.gr@gmail.com"],
+                )
+
+post_save.connect(send_invitaion_mail,sender=User)

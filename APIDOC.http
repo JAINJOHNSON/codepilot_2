@@ -19,10 +19,10 @@ POST http://127.0.0.1:8000/accounts/student/register/
 Content-Type: application/json
 
 {
-    "username":"sd2",
-    "email":"sd2@gmail.com",
-    "password":"sd2",
-    "phone":"1111111112"
+    "username":"sd4",
+    "email":"sd4@gmail.com",
+    "password":"sd4",
+    "phone":"1111111114"
 }
 
 # api call completing student profile
@@ -85,7 +85,7 @@ POST http://127.0.0.1:8000/accounts/jwt/token/register/
 Content-Type: application/json
 
 {
-    "username":"sd2",
+    "username":"1111111112",
     "password":"sd2"
 }
 
